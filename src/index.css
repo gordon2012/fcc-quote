@@ -1,5 +1,68 @@
+/* BASE */
 body {
   margin: 0;
-  padding: 0;
+  padding: 0 30px;
   font-family: sans-serif;
+  background: #ccc;
+}
+
+/* Utility Classes */
+.btn {
+  border: 1px solid #333;
+  padding: 10px 30px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+.btn:hover {
+  cursor: pointer;
+  background: #333;
+  color: whitesmoke;
+}
+
+.loading {
+  text-align: center;
+  animation: rotation 0.5s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+/* Layout/Quote */
+.App {
+  min-height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#quote-box {
+  min-height: 350px;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#quote-copy {
+  padding: 15px 0;
+}
+#text {
+  font-size: 1.25em;
+}
+#author {
+  font-weight: bold;
+  font-style: italic;
+  padding: 15px;
+}
+#quote-links {
+  display: flex;
+  justify-content: space-between;
 }
