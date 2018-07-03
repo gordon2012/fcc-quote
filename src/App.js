@@ -53,7 +53,7 @@ class App extends Component {
             <a
               id="tweet-quote"
               className="btn"
-              href={`https://twitter.com/intent/tweet?status=${text} --${author}`}
+              href={`https://twitter.com/intent/tweet?status=${text} ${author}`}
               target="_blank"
               rel="noopener noreferrer"
             >
