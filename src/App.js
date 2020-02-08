@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import jsonp from 'jsonp';
+import rotateRight from './fa-rotate-right.png';
 
 class App extends Component {
   state = {
@@ -13,15 +15,18 @@ class App extends Component {
       text: '',
       author: ''
     });
-    fetch('https://talaikis.com/api/quotes/random/')
-      .then(response => response.json())
-      .then(json =>
-        this.setState({
-          loading: false,
-          text: json.quote,
-          author: `-- ${json.author}`
-        })
-      );
+
+    jsonp('https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=quote', { name: 'quote' }, (err, data) => {
+        if(err) {
+            console.error(err.message);
+        } else {
+            this.setState({
+                loading: false,
+                text: data.quoteText,
+                author: `-- ${data.quoteAuthor}`
+            });
+        }
+    });
   };
 
   componentDidMount() {
@@ -37,7 +42,7 @@ class App extends Component {
             {loading ? (
               <div className="loading">
                 <img
-                  src="https://imgplaceholder.com/200x200/transparent/333/fa-rotate-right"
+                  src={rotateRight}
                   alt="Loading..."
                 />
               </div>
